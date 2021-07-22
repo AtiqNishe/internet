@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Api</title>
+</head>
+<body>
+    <h1 id="a">Name</h1>
+    <h1 id="b">Name</h1>
+    <h1 id="c">Name</h1>
+    <h1 id="d">Name</h1>
+    <h1 id="e">Name</h1>
+    <h1 id="f">Name</h1>
+    <h3><img id="emg" src="" alt="aaaa"></h3>
+
+    <script>
+        fetch('https://randomuser.me/api')
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            const name = data.results[0].name;
+            const fullName =`${name.title} ${name.first} ${name.last} `;
+            console.log(fullName);
+            document.getElementById('a').innerText = fullName;
+            document.getElementById('b').innerText = data.results[0].location.country;
+            document.getElementById('c').innerText = data.results[0].location.city;
+            document.getElementById('d').innerText = data.results[0].location.state;
+            document.getElementById('e').innerText = data.results[0].location.postcode;
+            document.getElementById('f').innerText = data.results[0].location.country;
+            document.getElementById('emg').innerText = data.results[0].picture.medium;
+            
+        })
+
+    </script>
+</body>
+</html>
